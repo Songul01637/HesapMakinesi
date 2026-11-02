@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Ayarlar sayfası -->
+<ContentPage
+    x:Class="HesapMakine.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Ayarlar"
+    BackgroundColor="{AppThemeBinding Light=#F3F4FA, Dark=#101426}">
+
+	<Grid Padding="22"
+          RowDefinitions="Auto,Auto,*,Auto"
+          RowSpacing="20">
+
+		<!-- Başlık ve açıklama -->
+		<VerticalStackLayout Grid.Row="0" Spacing="6">
+
+			<Label
+                Text="⚙️ Ayarlar"
+                FontSize="25"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#24243A, Dark=White}"/>
+
+			<Label
+                Text="Hesap makinenin görünümünü kişiselleştir"
+                FontSize="13"
+                TextColor="{AppThemeBinding Light=#77778D, Dark=#9299B2}"/>
+		</VerticalStackLayout>
+
+		<!-- Tema ayarları -->
+		<Border Grid.Row="1"
+                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1B2239}"
+                Stroke="{AppThemeBinding Light=#D9DCE8, Dark=#303957}"
+                StrokeThickness="1"
+                Padding="20"
+                StrokeShape="RoundRectangle 22">
+
+			<VerticalStackLayout Spacing="16">
+
+				<Label
+                    Text="GÖRÜNÜM AYARLARI"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    CharacterSpacing="2"
+                    TextColor="{AppThemeBinding Light=#7655D9, Dark=#A78BFA}"/>
+
+				<Label
+                    Text="Tema Seçimi"
+                    FontSize="17"
+                    FontAttributes="Bold"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=White}"/>
+
+				<Label
+                    Text="Uygulamanın renk görünümünü seçebilirsin."
+                    FontSize="12"
+                    TextColor="{AppThemeBinding Light=#77778D, Dark=#9299B2}"/>
+
+				<!-- Tema seçim listesi -->
+				<Picker
+                    x:Name="ThemePicker"
+                    Title="Tema seçiniz"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=White}"
+                    TitleColor="{AppThemeBinding Light=#77778D, Dark=#9299B2}"
+                    BackgroundColor="{AppThemeBinding Light=#F0EEF8, Dark=#242D49}"
+                    SelectedIndex="0">
+
+					<Picker.Items>
+						<x:String>Sistem</x:String>
+						<x:String>Açık</x:String>
+						<x:String>Koyu</x:String>
+					</Picker.Items>
+				</Picker>
+
+				<!-- Temayı kaydet -->
+				<Button
+                    Text="✓  TEMAYI KAYDET"
+                    Clicked="OnSaveThemeClicked"
+                    BackgroundColor="#A78BFA"
+                    TextColor="#101426"
+                    FontAttributes="Bold"
+                    CornerRadius="14"
+                    HeightRequest="50"/>
+
+			</VerticalStackLayout>
+		</Border>
+
+		<!-- Boş alan -->
+		<BoxView Grid.Row="2" Opacity="0"/>
+
+		<!-- Hesap makinesi sayfalarına geçiş -->
+		<VerticalStackLayout Grid.Row="3" Spacing="10">
+
+			<Label
+                Text="HESAP MAKİNESİ"
+                FontSize="11"
+                FontAttributes="Bold"
+                CharacterSpacing="2"
+                TextColor="{AppThemeBinding Light=#77778D, Dark=#9299B2}"/>
+
+			<Button
+                Text="🧮  Standart Hesap Makinesi"
+                Clicked="OnStandardClicked"
+                BackgroundColor="{AppThemeBinding Light=#E8E3F7, Dark=#242D49}"
+                TextColor="{AppThemeBinding Light=#6045B5, Dark=#C4B5FD}"
+                BorderColor="{AppThemeBinding Light=#C9BCEB, Dark=#51418D}"
+                BorderWidth="1"
+                CornerRadius="14"
+                HeightRequest="50"
+                FontAttributes="Bold"/>
+
+			<Button
+                Text="🔬  Bilimsel Hesap Makinesi"
+                Clicked="OnScientificClicked"
+                BackgroundColor="{AppThemeBinding Light=#E8E3F7, Dark=#242D49}"
+                TextColor="{AppThemeBinding Light=#6045B5, Dark=#C4B5FD}"
+                BorderColor="{AppThemeBinding Light=#C9BCEB, Dark=#51418D}"
+                BorderWidth="1"
+                CornerRadius="14"
+                HeightRequest="50"
+                FontAttributes="Bold"/>
+
+		</VerticalStackLayout>
+
+	</Grid>
+</ContentPage>

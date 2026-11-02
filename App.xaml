@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HesapMakine.App">
+
+	<Application.Resources>
+		<ResourceDictionary>
+
+			<!-- Renk ve stil dosyalarını uygulamaya dahil eder. -->
+			<ResourceDictionary.MergedDictionaries>
+
+				<!-- Uygulamanın renk tanımları -->
+				<ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+
+				<!-- Uygulamanın ortak stilleri -->
+				<ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
+			</ResourceDictionary.MergedDictionaries>
+
+		</ResourceDictionary>
+	</Application.Resources>
+
+</Application>

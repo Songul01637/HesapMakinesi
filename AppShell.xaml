@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Uygulamanın sayfalar arası gezinme yapısını tanımlar. -->
+<!-- FlyoutBehavior özelliği sol taraftan açılan menüyü etkinleştirir. -->
+<Shell
+    x:Class="HesapMakine.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:HesapMakine.Pages"
+    FlyoutBehavior="Flyout">
+
+	<!-- Standart hesap makinesi sayfasını menüye ekler. -->
+	<FlyoutItem Title="🧮 Standart Hesap Makinesi">
+		<ShellContent
+            Title="Standart"
+            ContentTemplate="{DataTemplate pages:StandardPage}"
+            Route="standard" />
+	</FlyoutItem>
+
+	<!-- Bilimsel hesap makinesi sayfasını menüye ekler. -->
+	<FlyoutItem Title="🔬 Bilimsel Hesap Makinesi">
+		<ShellContent
+            Title="Bilimsel"
+            ContentTemplate="{DataTemplate pages:ScientificPage}"
+            Route="scientific" />
+	</FlyoutItem>
+
+	<!-- Ayarlar sayfasını menüye ekler. -->
+	<FlyoutItem Title="⚙️ Ayarlar">
+		<ShellContent
+            Title="Ayarlar"
+            ContentTemplate="{DataTemplate pages:SettingsPage}"
+            Route="settings" />
+	</FlyoutItem>
+
+</Shell>

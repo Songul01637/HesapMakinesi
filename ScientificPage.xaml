@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HesapMakine.Pages.ScientificPage"
+    Title="Bilimsel"
+    BackgroundColor="{AppThemeBinding Light=#F3F4F8, Dark=#101426}">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="22" Spacing="15">
+
+			<!-- ÜST BAŞLIK -->
+			<VerticalStackLayout Spacing="5">
+
+				<Label
+                    Text="ADVANCED CALCULATOR"
+                    TextColor="#A78BFA"
+                    FontSize="12"
+                    CharacterSpacing="4"
+                    FontAttributes="Bold"/>
+
+				<Label
+                    Text="Bilimsel Hesap Makinesi"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    FontSize="25"
+                    FontAttributes="Bold"/>
+
+				<Label
+                    Text="Gelişmiş matematiksel işlemler"
+                    TextColor="{AppThemeBinding Light=#777B8D, Dark=#9299B2}"
+                    FontSize="13"/>
+
+			</VerticalStackLayout>
+
+			<!-- SONUÇ EKRANI -->
+			<Border
+                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1B2239}"
+                Stroke="{AppThemeBinding Light=#D9DCE8, Dark=#303957}"
+                StrokeThickness="1"
+                Padding="20"
+                HeightRequest="110"
+                StrokeShape="RoundRectangle 22">
+
+				<VerticalStackLayout
+                    Spacing="6"
+                    VerticalOptions="Center">
+
+					<Label
+                        Text="SONUÇ"
+                        TextColor="{AppThemeBinding Light=#777B8D, Dark=#9299B2}"
+                        FontSize="11"
+                        CharacterSpacing="3"/>
+
+					<Label
+                        x:Name="DisplayLabel"
+                        Text="0"
+                        TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                        FontSize="36"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="End"
+                        LineBreakMode="TailTruncation"/>
+
+				</VerticalStackLayout>
+			</Border>
+
+			<!-- İŞLEM GEÇMİŞİ -->
+			<Border
+                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1B2239}"
+                Stroke="{AppThemeBinding Light=#D9DCE8, Dark=#303957}"
+                StrokeThickness="1"
+                Padding="15"
+                HeightRequest="65"
+                StrokeShape="RoundRectangle 18">
+
+				<VerticalStackLayout
+                    Spacing="4"
+                    VerticalOptions="Center">
+
+					<Label
+                        Text="İŞLEM GEÇMİŞİ"
+                        TextColor="{AppThemeBinding Light=#777B8D, Dark=#9299B2}"
+                        FontSize="10"
+                        CharacterSpacing="2"/>
+
+					<Label
+                        x:Name="HistoryLabel"
+                        Text=""
+                        TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                        FontSize="11"
+                        HorizontalTextAlignment="End"
+                        LineBreakMode="TailTruncation"/>
+
+				</VerticalStackLayout>
+			</Border>
+
+			<!-- TUŞ TAKIMI -->
+			<Grid
+                ColumnDefinitions="*,*,*,*"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                ColumnSpacing="10"
+                RowSpacing="8">
+
+				<!-- AÇILIR MENÜLER -->
+				<Picker
+                    x:Name="TrigonometryPicker"
+                    Title="Trigonometri"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    TitleColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    SelectedIndexChanged="OnTrigonometrySelected"/>
+
+				<Picker
+                    x:Name="FunctionPicker"
+                    Title="Fonksiyon"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    TitleColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    SelectedIndexChanged="OnFunctionSelected"/>
+
+				<!-- PARANTEZ VE TEMİZLEME -->
+				<Button
+                    Text="("
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Clicked="OnOpenParenthesisClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text=")"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Clicked="OnCloseParenthesisClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="AC"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Clicked="OnClearClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    FontAttributes="Bold"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="⌫"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Clicked="OnBackspaceClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<!-- SABİTLER VE ÜS İŞLEMLERİ -->
+				<Button
+                    Text="π"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Clicked="OnFunctionClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="e"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Clicked="OnFunctionClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="x²"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Clicked="OnFunctionClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="x³"
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Clicked="OnFunctionClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<!-- YÜZDE VE İŞLEMLER -->
+				<Button
+                    Text="%"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Clicked="OnFunctionClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="+/-"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Clicked="OnFunctionClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="÷"
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Clicked="OnOperatorClicked"
+                    BackgroundColor="{AppThemeBinding Light=#7965DF, Dark=#6552D9}"
+                    TextColor="White"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="×"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Clicked="OnOperatorClicked"
+                    BackgroundColor="{AppThemeBinding Light=#7965DF, Dark=#6552D9}"
+                    TextColor="White"
+                    HeightRequest="45"/>
+
+				<!-- 7, 8, 9 -->
+				<Button
+                    Text="7"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="8"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="9"
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="-"
+                    Grid.Row="4"
+                    Grid.Column="3"
+                    Clicked="OnOperatorClicked"
+                    BackgroundColor="{AppThemeBinding Light=#7965DF, Dark=#6552D9}"
+                    TextColor="White"
+                    HeightRequest="45"/>
+
+				<!-- 4, 5, 6 -->
+				<Button
+                    Text="4"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="5"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="6"
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="+"
+                    Grid.Row="5"
+                    Grid.Column="3"
+                    Clicked="OnOperatorClicked"
+                    BackgroundColor="{AppThemeBinding Light=#7965DF, Dark=#6552D9}"
+                    TextColor="White"
+                    HeightRequest="45"/>
+
+				<!-- 1, 2, 3, 0 -->
+				<Button
+                    Text="1"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="2"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="3"
+                    Grid.Row="6"
+                    Grid.Column="2"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="0"
+                    Grid.Row="6"
+                    Grid.Column="3"
+                    Clicked="OnNumberClicked"
+                    BackgroundColor="{AppThemeBinding Light=#B5A5ED, Dark=#AD9AE8}"
+                    TextColor="{AppThemeBinding Light=#24243A, Dark=#FFFFFF}"
+                    HeightRequest="45"/>
+
+				<!-- VİRGÜL VE EŞİTTİR -->
+				<Button
+                    Text=","
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Clicked="OnFunctionClicked"
+                    BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#34304F}"
+                    TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                    HeightRequest="45"/>
+
+				<Button
+                    Text="="
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Clicked="OnEqualClicked"
+                    BackgroundColor="{AppThemeBinding Light=#967CEB, Dark=#A78BFA}"
+                    TextColor="#FFFFFF"
+                    FontAttributes="Bold"
+                    HeightRequest="45"/>
+
+			</Grid>
+
+			<!-- STANDART HESAP MAKİNESİ -->
+			<Button
+                Text="←  STANDART HESAP MAKİNESİ"
+                Clicked="OnStandardClicked"
+                BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#242D49}"
+                TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                BorderColor="{AppThemeBinding Light=#C9BDF0, Dark=#51418D}"
+                BorderWidth="1"
+                CornerRadius="16"
+                HeightRequest="48"
+                FontAttributes="Bold"
+                FontSize="13"/>
+
+			<!-- AYARLAR -->
+			<Button
+                Text="AYARLAR"
+                Clicked="OnSettingsClicked"
+                BackgroundColor="{AppThemeBinding Light=#E8E4FA, Dark=#242D49}"
+                TextColor="{AppThemeBinding Light=#6552D9, Dark=#C4B5FD}"
+                BorderColor="{AppThemeBinding Light=#C9BDF0, Dark=#51418D}"
+                BorderWidth="1"
+                CornerRadius="16"
+                HeightRequest="48"
+                FontAttributes="Bold"
+                FontSize="13"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

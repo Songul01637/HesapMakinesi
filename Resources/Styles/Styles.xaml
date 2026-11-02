@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Uygulama genelinde kullanılacak stillerin tanımlandığı kaynak sözlük -->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<!-- ActivityIndicator: Yükleme işlemi sırasında dönen göstergenin rengini belirler -->
+	<Style TargetType="ActivityIndicator">
+		<Setter Property="Color"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+	</Style>
+
+	<!-- IndicatorView: Sayfalama göstergelerinin renklerini belirler -->
+	<Style TargetType="IndicatorView">
+		<!-- Seçili olmayan göstergelerin rengi -->
+		<Setter Property="IndicatorColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}"/>
+		<!-- Seçili olan göstergenin rengi -->
+		<Setter Property="SelectedIndicatorColor"
+                Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}"/>
+	</Style>
+
+	<!-- Border: Kenarlık görünümünü ve kalınlığını belirler -->
+	<Style TargetType="Border">
+		<!-- Kenarlık rengi -->
+		<Setter Property="Stroke"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+		<!-- Kenarlık şekli dikdörtgen olarak ayarlanır -->
+		<Setter Property="StrokeShape" Value="Rectangle"/>
+		<!-- Kenarlık kalınlığı -->
+		<Setter Property="StrokeThickness" Value="1"/>
+	</Style>
+
+	<!-- BoxView: Renkli alan veya şekillerin arka plan rengini belirler -->
+	<Style TargetType="BoxView">
+		<Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+	</Style>
+
+	<!-- BaseButtonStyle: Uygulamadaki butonlar için ortak temel stil -->
+	<Style x:Key="BaseButtonStyle" TargetType="Button">
+		<!-- Buton üzerindeki yazının rengi -->
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
+		<!-- Butonun arka plan rengi -->
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+		<!-- Buton yazı tipi -->
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<!-- Yazı boyutu -->
+		<Setter Property="FontSize" Value="14"/>
+		<!-- Kenarlık kalınlığı -->
+		<Setter Property="BorderWidth" Value="0"/>
+		<!-- Buton köşelerinin yuvarlaklığı -->
+		<Setter Property="CornerRadius" Value="8"/>
+		<!-- Butonun iç boşlukları -->
+		<Setter Property="Padding" Value="14,10"/>
+		<!-- Minimum buton yüksekliği -->
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<!-- Minimum buton genişliği -->
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- Bütün butonlara temel stili otomatik olarak uygular -->
+	<Style TargetType="Button"
+           BasedOn="{StaticResource BaseButtonStyle}"/>
+
+	<!-- NumberButtonStyle: Hesap makinesindeki sayı butonlarının görünümünü belirler -->
+	<Style x:Key="NumberButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource BaseButtonStyle}">
+		<!-- Sayı butonlarının arka plan rengi -->
+		<Setter Property="BackgroundColor" Value="#252B40"/>
+	</Style>
+
+	<!-- OperatorButtonStyle: Toplama, çıkarma, çarpma ve bölme butonlarının stili -->
+	<Style x:Key="OperatorButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource BaseButtonStyle}">
+		<!-- İşlem butonlarının arka plan rengi -->
+		<Setter Property="BackgroundColor" Value="#414968"/>
+	</Style>
+
+	<!-- EqualButtonStyle: Eşittir butonunun görünümünü belirler -->
+	<Style x:Key="EqualButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource BaseButtonStyle}">
+		<!-- Eşittir butonunun arka plan rengi -->
+		<Setter Property="BackgroundColor" Value="#7655D9"/>
+	</Style>
+
+	<!-- CheckBox: Onay kutularının rengini ve minimum boyutlarını belirler -->
+	<Style TargetType="CheckBox">
+		<Setter Property="Color"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- DatePicker: Tarih seçme alanının görünümünü belirler -->
+	<Style TargetType="DatePicker">
+		<!-- Tarih metninin rengi -->
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+		<!-- Arka plan şeffaf yapılır -->
+		<Setter Property="BackgroundColor" Value="Transparent" />
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- Editor: Çok satırlı metin giriş alanlarının stilini belirler -->
+	<Style TargetType="Editor">
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+		<Setter Property="BackgroundColor" Value="Transparent" />
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<Setter Property="FontSize" Value="14" />
+		<!-- Yer tutucu metnin rengi -->
+		<Setter Property="PlaceholderColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- Entry: Tek satırlık metin giriş alanlarının stilini belirler -->
+	<Style TargetType="Entry">
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+		<Setter Property="BackgroundColor" Value="Transparent" />
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="PlaceholderColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- ImageButton: Resim içeren butonların görünümünü belirler -->
+	<Style TargetType="ImageButton">
+		<!-- Butonun tamamen görünür olmasını sağlar -->
+		<Setter Property="Opacity" Value="1" />
+		<!-- Kenarlık şeffaf yapılır -->
+		<Setter Property="BorderColor" Value="Transparent"/>
+		<Setter Property="BorderWidth" Value="0"/>
+		<!-- Köşeler düz yapılır -->
+		<Setter Property="CornerRadius" Value="0"/>
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- Label: Uygulamadaki metin alanları için varsayılan stil -->
+	<Style TargetType="Label">
+		<!-- Metin rengi açık ve koyu temaya göre değişir -->
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+		<Setter Property="BackgroundColor" Value="Transparent" />
+		<Setter Property="FontFamily" Value="OpenSansRegular" />
+		<Setter Property="FontSize" Value="14" />
+	</Style>
+
+	<!-- Headline: Büyük başlık metinleri için özel stil -->
+	<Style TargetType="Label" x:Key="Headline">
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+		<!-- Başlık yazısının boyutu -->
+		<Setter Property="FontSize" Value="32" />
+		<!-- Başlık yatay olarak ortalanır -->
+		<Setter Property="HorizontalOptions" Value="Center" />
+		<Setter Property="HorizontalTextAlignment" Value="Center" />
+	</Style>
+
+	<!-- SubHeadline: Alt başlık metinleri için özel stil -->
+	<Style TargetType="Label" x:Key="SubHeadline">
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+		<Setter Property="FontSize" Value="24" />
+		<Setter Property="HorizontalOptions" Value="Center" />
+		<Setter Property="HorizontalTextAlignment" Value="Center" />
+	</Style>
+
+	<!-- Picker: Açılır listelerin görünümünü belirler -->
+	<Style TargetType="Picker">
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+		<!-- Liste başlığının rengi -->
+		<Setter Property="TitleColor"
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+		<Setter Property="BackgroundColor" Value="Transparent" />
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- ProgressBar: İlerleme çubuğunun rengini belirler -->
+	<Style TargetType="ProgressBar">
+		<Setter Property="ProgressColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+	</Style>
+
+	<!-- RadioButton: Tek seçenek seçmek için kullanılan butonların stili -->
+	<Style TargetType="RadioButton">
+		<Setter Property="BackgroundColor" Value="Transparent"/>
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- RefreshView: Yenileme işlemi sırasında görünen simgenin rengini belirler -->
+	<Style TargetType="RefreshView">
+		<Setter Property="RefreshColor"
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+	</Style>
+
+	<!-- SearchBar: Arama çubuğunun görünümünü belirler -->
+	<Style TargetType="SearchBar">
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+		<!-- Arama alanındaki açıklama yazısının rengi -->
+		<Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
+		<!-- Arama metnini silme butonunun rengi -->
+		<Setter Property="CancelButtonColor" Value="{StaticResource Gray500}" />
+		<Setter Property="BackgroundColor" Value="Transparent" />
+		<Setter Property="FontFamily" Value="OpenSansRegular" />
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- Shadow: Görsel öğelerin gölge efektini belirler -->
+	<Style TargetType="Shadow">
+		<!-- Gölgenin bulanıklık yarıçapı -->
+		<Setter Property="Radius" Value="15" />
+		<!-- Gölgenin saydamlık oranı -->
+		<Setter Property="Opacity" Value="0.5" />
+		<!-- Gölgenin rengi -->
+		<Setter Property="Brush"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
+		<!-- Gölgenin yatay ve dikey konumu -->
+		<Setter Property="Offset" Value="10,10" />
+	</Style>
+
+	<!-- Slider: Kaydırma çubuğunun görünümünü belirler -->
+	<Style TargetType="Slider">
+		<!-- Seçilen değere kadar olan kısmın rengi -->
+		<Setter Property="MinimumTrackColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+		<!-- Seçilmeyen kısmın rengi -->
+		<Setter Property="MaximumTrackColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+		<!-- Kaydırma düğmesinin rengi -->
+		<Setter Property="ThumbColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+	</Style>
+
+	<!-- SwipeItem: Kaydırma hareketiyle açılan seçeneklerin arka plan rengini belirler -->
+	<Style TargetType="SwipeItem">
+		<Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+	</Style>
+
+	<!-- Switch: Açma ve kapama anahtarının renklerini belirler -->
+	<Style TargetType="Switch">
+		<!-- Anahtar açıkken kullanılan renk -->
+		<Setter Property="OnColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+		<!-- Anahtarın hareketli düğmesinin rengi -->
+		<Setter Property="ThumbColor" Value="{StaticResource White}" />
+	</Style>
+
+	<!-- TimePicker: Saat seçme alanının görünümünü belirler -->
+	<Style TargetType="TimePicker">
+		<Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+		<Setter Property="BackgroundColor" Value="Transparent"/>
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumWidthRequest" Value="44"/>
+	</Style>
+
+	<!-- Page: Uygulamadaki sayfaların ortak görünümünü belirler -->
+	<Style TargetType="Page" ApplyToDerivedTypes="True">
+		<!-- Sayfa kenar boşluğu sıfırlanır -->
+		<Setter Property="Padding" Value="0"/>
+		<!-- Sayfa arka planı açık ve koyu temaya göre değişir -->
+		<Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
+	</Style>
+
+	<!-- Shell: Uygulama navigasyon yapısının genel görünümünü belirler -->
+	<Style TargetType="Shell" ApplyToDerivedTypes="True">
+		<!-- Navigasyon çubuğunun arka plan rengi -->
+		<Setter Property="Shell.BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
+		<!-- Navigasyon üzerindeki içeriklerin rengi -->
+		<Setter Property="Shell.ForegroundColor"
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />
+		<!-- Sayfa başlığının rengi -->
+		<Setter Property="Shell.TitleColor"
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />
+		<!-- Devre dışı bırakılmış öğelerin rengi -->
+		<Setter Property="Shell.DisabledColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+		<!-- Seçili olmayan öğelerin rengi -->
+		<Setter Property="Shell.UnselectedColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
+		<!-- Navigasyon çubuğundaki gölge kaldırılır -->
+		<Setter Property="Shell.NavBarHasShadow" Value="False" />
+		<!-- Alt sekme çubuğunun arka plan rengi -->
+		<Setter Property="Shell.TabBarBackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+		<!-- Seçili sekmenin simge ve metin rengi -->
+		<Setter Property="Shell.TabBarForegroundColor"
+                Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
+		<!-- Seçili sekmenin başlık rengi -->
+		<Setter Property="Shell.TabBarTitleColor"
+                Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
+		<!-- Seçili olmayan sekmelerin rengi -->
+		<Setter Property="Shell.TabBarUnselectedColor"
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+	</Style>
+
+	<!-- NavigationPage: Sayfalar arası geçişte kullanılan üst navigasyon çubuğunun stilini belirler -->
+	<Style TargetType="NavigationPage">
+		<!-- Navigasyon çubuğunun arka plan rengi -->
+		<Setter Property="BarBackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
+		<!-- Navigasyon çubuğundaki yazıların rengi -->
+		<Setter Property="BarTextColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
+		<!-- Navigasyon simgelerinin rengi -->
+		<Setter Property="IconColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
+	</Style>
+
+	<!-- TabbedPage: Sekmeli sayfa yapısının görünümünü belirler -->
+	<Style TargetType="TabbedPage">
+		<!-- Sekme çubuğunun arka plan rengi -->
+		<Setter Property="BarBackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
+		<!-- Sekme başlıklarının rengi -->
+		<Setter Property="BarTextColor"
+                Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
+		<!-- Seçili olmayan sekmelerin rengi -->
+		<Setter Property="UnselectedTabColor"
+                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+		<!-- Seçili sekmenin rengi -->
+		<Setter Property="SelectedTabColor"
+                Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+	</Style>
+
+</ResourceDictionary>
